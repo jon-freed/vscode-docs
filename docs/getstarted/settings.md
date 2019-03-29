@@ -7,22 +7,31 @@ PageTitle: Visual Studio Code User and Workspace Settings
 DateApproved: 3/7/2019
 MetaDescription: How to modify Visual Studio Code User and Workspace Settings.
 ---
-# User and Workspace Settings
+# User, Workspace, and Folder Settings
 
 It is easy to configure Visual Studio Code to your liking through its various settings. Nearly every part of VS Code's editor, user interface, and functional behavior has options you can modify.
 
+[Default settings](/docs/getstarted/settings.md#default-settings) are listed towards the bottom of this page.
+
+## Workspace versus Folder Settings
+
+If you have an open workspace with its own `.code-settings` file, then the settings UI's "Workspace" tab will be for that open workspace's settings.  A third tab (not shown below) will be displayed for an open top-level folder's settings.
+
+If you have a open folder and do not have an open workspace, then the settings UI's "Workspace" tab will be for that open folder's settings as shown below.
+
 ![VS Code settings](images/settings/hero.png)
 
-VS Code provides two different scopes for settings:
+VS Code provides three different scopes for settings:
 
 * **User Settings** - Settings that apply globally to any instance of VS Code you open.
-* **Workspace Settings** - Settings stored inside your workspace and only apply when the workspace is opened.
+* **Workspace Settings** - Settings stored inside your workspace file that only apply when the workspace is opened.
+* **Folder Settings** - Settings stored inside the folder's .vscode subfolder that apply only when that folder is opened.
 
-Workspace settings override user settings.
+Folder settings override workplace settings which override user settings.
 
-## Creating User and Workspace Settings
+## Editing User, Workspace, and Folder Settings
 
-To open your user and workspace settings, use the following VS Code menu command:
+To open your settings, use the following VS Code menu command:
 
 * On Windows/Linux - **File** > **Preferences** > **Settings**
 * On macOS - **Code** > **Preferences** > **Settings**
@@ -35,7 +44,7 @@ In the example below, the color theme and the icon theme have been changed.
 
 Changes to settings are reloaded by VS Code as you change them. Modified settings are now indicated with a _blue line_ similar to modified lines in the editor. The gear icon opens a context menu with options to reset the setting to its default value as well as copy setting as JSON.
 
->**Note:** Workspace settings are useful for sharing project specific settings across a team.
+>**Note:** Workspace and folder settings are useful for sharing project specific settings across a team.
 
 ## Settings editor
 
@@ -57,21 +66,16 @@ Default settings are represented in groups so that you can navigate them easily.
 
 ![Settings Groups](images/settings/settings-groups.png)
 
-Below is a [copy of the default settings](/docs/getstarted/settings.md#default-settings) that come with VS Code.
-
 ## Settings file locations
 
-By default VS Code shows the Settings editor, but you can still edit the underlying `settings.json` file by using the **Open Settings (JSON)** command or by changing your default settings editor with the `workbench.settings.editor` setting.
+An alternative to the settings UI is to edit the underlying JSON in the settings files.
 
-Depending on your platform, the user settings file is located here:
+* User settings are in a location that depends on your platform:
+ * **Windows** `%APPDATA%\Code\User\settings.json`
+ * **macOS** `$HOME/Library/Application Support/Code/User/settings.json`
+ * **Linux** `$HOME/.config/Code/User/settings.json`
 
-* **Windows** `%APPDATA%\Code\User\settings.json`
-* **macOS** `$HOME/Library/Application Support/Code/User/settings.json`
-* **Linux** `$HOME/.config/Code/User/settings.json`
-
-The workspace setting file is located under the `.vscode` folder in your root folder.
-
->**Note:** In case of a [Multi-root Workspace](/docs/editor/multi-root-workspaces.md#settings), workspace settings are located inside the workspace configuration file.
+* [Workspace settings](/docs/editor/multi-root-workspaces.md#settings) are stored in a file with the extension `.code-settings`.  It may be stored anywhere within or outside of the workspace's open folders.
 
 ## Language specific editor settings
 
